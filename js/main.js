@@ -37,3 +37,11 @@ const personnes = [
         localite: 'San Francisco',
     }
 ];
+
+// Fonction qui affiche les personnes dans le tableau HTML
+function affichePersonnes () {
+    alert('coucou');
+}
+
+// Appel de la fonction pour afficher les personnes
+window.addEventListener('load', affichePersonnes);
