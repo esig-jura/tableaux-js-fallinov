@@ -40,7 +40,14 @@ const personnes = [
 
 // Récupération des éléments HTML
 const tableBodyPersonnes = document.querySelector('.personnes'); // Corps du tableau
-console.log(tableBodyPersonnes);
+const formulaire = document.querySelector('form'); // Formulaire
+
+
+formulaire.addEventListener('submit', function(event){
+    event.preventDefault(); // Stoppe l'envoi du formulaire
+    console.log("Formulaire envoyé !");
+});
+
 
 // Fonction qui affiche les personnes dans le tableau HTML
 function affichePersonnes () {
@@ -56,7 +63,6 @@ function affichePersonnes () {
                 <td>${pers.localite}</td>
             </tr>`;
     }
-    console.log(tableBodyPersonnes.innerHTML);
 }
 
 // Appel de la fonction pour afficher les personnes
