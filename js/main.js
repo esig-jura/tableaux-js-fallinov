@@ -41,11 +41,24 @@ const personnes = [
 // Récupération des éléments HTML
 const tableBodyPersonnes = document.querySelector('.personnes'); // Corps du tableau
 const formulaire = document.querySelector('form'); // Formulaire
-
+const champPrenom = document.getElementById('prenom');
+const champNom = document.getElementById('nom');
+const champAge = document.getElementById('age');
+const champLocalite = document.getElementById('localite');
 
 formulaire.addEventListener('submit', function(event){
     event.preventDefault(); // Stoppe l'envoi du formulaire
-    console.log("Formulaire envoyé !");
+
+    // Ajoute une nouvelle personne à la fin du tableau
+    personnes.push({
+        prenom: champPrenom.value,
+        nom: champNom.value,
+        age: champAge.value,
+        localite: champLocalite.value
+    })
+
+    // Réafficher le tableau avec la nouvelle personne
+    affichePersonnes();
 });
 
 
