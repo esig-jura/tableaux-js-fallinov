@@ -4,7 +4,7 @@
  */
 
 'use strict';
-
+// Déclaration des données
 const personnes = [
     {
         nom: 'Doe',
@@ -13,35 +13,51 @@ const personnes = [
         localite: 'New York',
     },
     {
-        nom: 'Doe',
+        nom: 'Ré',
         prenom: 'Jane',
         age: 30,
         localite: 'Los Angeles',
     },
     {
-        nom: 'Doe',
+        nom: 'Mi',
         prenom: 'Jack',
         age: 28,
         localite: 'Chicago',
     },
     {
-        nom: 'Doe',
+        nom: 'Fa',
         prenom: 'Jill',
         age: 35,
         localite: 'Miami',
     },
     {
-        nom: 'Doe',
+        nom: 'Sol',
         prenom: 'Jim',
         age: 40,
         localite: 'San Francisco',
     }
 ];
 
+// Récupération des éléments HTML
+const tableBodyPersonnes = document.querySelector('.personnes'); // Corps du tableau
+console.log(tableBodyPersonnes);
+
 // Fonction qui affiche les personnes dans le tableau HTML
 function affichePersonnes () {
-    alert('coucou');
+    // Vider le tableau
+    tableBodyPersonnes.innerHTML = '';
+    // Créer une ligne pour chaque personne
+    for (let pers of personnes) {
+        tableBodyPersonnes.innerHTML += `
+            <tr>
+                <td>${pers.prenom}</td>
+                <td>${pers.nom}</td>
+                <td>${pers.age}</td>
+                <td>${pers.localite}</td>
+            </tr>`;
+    }
+    console.log(tableBodyPersonnes.innerHTML);
 }
 
 // Appel de la fonction pour afficher les personnes
-window.addEventListener('load', affichePersonnes);
+affichePersonnes();
