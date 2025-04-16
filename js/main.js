@@ -1,6 +1,6 @@
 /**
  * @author Steve Fallet
- * @since 2022.09.06
+ * @since 2025.04.02
  */
 
 'use strict';
@@ -41,13 +41,17 @@ const personnes = [
 // Récupération des éléments HTML
 const tableBodyPersonnes = document.querySelector('.personnes'); // Corps du tableau
 const formulaire = document.querySelector('form'); // Formulaire
-const champPrenom = document.getElementById('prenom');
-const champNom = document.getElementById('nom');
-const champAge = document.getElementById('age');
-const champLocalite = document.getElementById('localite');
+const champPrenom = document.getElementById('prenom'); // Champ prénom
+const champNom = document.getElementById('nom'); // Champ nom
+const champAge = document.getElementById('age'); // Champ age
+const champLocalite = document.getElementById('localite'); // Champ localité
 
 // Déclaration des fonctions
-// Fonction qui affiche les personnes dans le tableau HTML
+
+/**
+ * Affiche les personnes du tableau JavaScipt `personnes`
+ * dans le <tbody> du tableau HTML
+ */
 function affichePersonnes () {
     // Vider le tableau
     tableBodyPersonnes.innerHTML = '';
@@ -62,13 +66,22 @@ function affichePersonnes () {
             </tr>`;
     }
 }
+
+/**
+ * Fonction qui
+ *   * valide la saisie utilisateur
+ *   * ajoute une personne au tableau JavaScript `personnes`
+ *   * ré-affiche le tableau en appelant la fonction `affichePersonnes()`
+ *
+ * @param event - objet événement qui a appelé la fonction
+ */
 function ajouterNouvellePersonne (event) {
     event.preventDefault(); // Stoppe l'envoi du formulaire
 
     // Récupération et nettoyage des valeurs saisies par l'utilsateur dans le formulaire
-    let prenom = champPrenom.value.trim(); // trim Supprime les espaces en début et fin de chaîne
+    let prenom = champPrenom.value.trim(); // trim() Supprime les espaces en début et fin de chaîne
     let nom = champNom.value.trim();
-    let age = parseInt(champAge.value); // Transforme la saisie en entier
+    let age = parseInt(champAge.value); // parseInt() Transforme la saisie en entier
     let localite = champLocalite.value.trim();
 
     // Tester si le formulaire et correctement rempli
@@ -85,7 +98,7 @@ function ajouterNouvellePersonne (event) {
         localite: localite
     });
 
-// Réafficher le tableau avec la nouvelle personne
+    // Réaffiche le tableau avec la nouvelle personne
     affichePersonnes();
 }
 
