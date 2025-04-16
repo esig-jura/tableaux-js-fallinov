@@ -45,6 +45,7 @@ const champPrenom = document.getElementById('prenom'); // Champ prénom
 const champNom = document.getElementById('nom'); // Champ nom
 const champAge = document.getElementById('age'); // Champ age
 const champLocalite = document.getElementById('localite'); // Champ localité
+const champRechercher = document.getElementById('rechercher'); // Champ de recherche
 
 // Déclaration des fonctions
 
@@ -53,10 +54,13 @@ const champLocalite = document.getElementById('localite'); // Champ localité
  * dans le <tbody> du tableau HTML
  */
 function affichePersonnes () {
+    let recherche = champRechercher.value.trim().toLowerCase();
+    let personnesTrouvees = personnes.filter(pers => pers.prenom.toLowerCase().includes(recherche));
+
     // Vider le tableau
     tableBodyPersonnes.innerHTML = '';
     // Créer une ligne pour chaque personne
-    for (let pers of personnes) {
+    for (let pers of personnesTrouvees) {
         tableBodyPersonnes.innerHTML += `
             <tr>
                 <td>${pers.prenom}</td>
@@ -104,6 +108,7 @@ function ajouterNouvellePersonne (event) {
 
 // Gestion des événements
 formulaire.addEventListener('submit', ajouterNouvellePersonne);
+champRechercher.addEventListener('input', affichePersonnes);
 
 // Initialisation de l'application
 affichePersonnes();
