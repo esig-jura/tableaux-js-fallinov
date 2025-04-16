@@ -65,12 +65,24 @@ function affichePersonnes () {
 function ajouterNouvellePersonne (event) {
     event.preventDefault(); // Stoppe l'envoi du formulaire
 
-// Ajoute une nouvelle personne à la fin du tableau
+    // Récupération et nettoyage des valeurs saisies par l'utilsateur dans le formulaire
+    let prenom = champPrenom.value.trim(); // trim Supprime les espaces en début et fin de chaîne
+    let nom = champNom.value.trim();
+    let age = parseInt(champAge.value); // Transforme la saisie en entier
+    let localite = champLocalite.value.trim();
+
+    // Tester si le formulaire et correctement rempli
+    if(!prenom || !nom || !age || !localite) {
+        alert('Merci de remplir tous les champs correctement !');
+        return; // Sort de la fonction ajouterNouvellePersonne
+    }
+
+    // Ajoute une nouvelle personne à la fin du tableau
     personnes.push({
-        prenom: champPrenom.value,
-        nom: champNom.value,
-        age: champAge.value,
-        localite: champLocalite.value
+        prenom: prenom,
+        nom: nom,
+        age: age,
+        localite: localite
     });
 
 // Réafficher le tableau avec la nouvelle personne
