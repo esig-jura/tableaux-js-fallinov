@@ -54,8 +54,13 @@ const champRechercher = document.getElementById('rechercher'); // Champ de reche
  * dans le <tbody> du tableau HTML
  */
 function affichePersonnes () {
+    // Récupération et nettoyage de la valeur saisie par l'utilisateur dans le champ de recherche
     let recherche = champRechercher.value.trim().toLowerCase();
-    let personnesTrouvees = personnes.filter(pers => pers.prenom.toLowerCase().includes(recherche));
+    // Copie du tableau `personnes` pour ne pas le modifier
+    // Tri du tableau par ordre alphabétique croissant sur le prénom
+    let personnesTrieesParPrenomAsc = [... personnes].sort((a, b) => a.prenom.localeCompare(b.prenom));
+    // Filtre le tableau sur prénom en fonction de la recherche
+    let personnesTrouvees = personnesTrieesParPrenomAsc.filter(pers => pers.prenom.toLowerCase().includes(recherche));
 
     // Vider le tableau
     tableBodyPersonnes.innerHTML = '';
